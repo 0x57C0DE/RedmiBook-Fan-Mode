@@ -22,7 +22,11 @@ pub fn run() -> Result<()> {
     let mut keyboard = Keyboard::open()?;
     let mut notifier = Notifier::new()?;
     let mut mode = Mode::from_raw(ec.read_byte(MODE_OFFSET)?);
-    println!("started, current mode: {mode}");
+    println!(
+        "{} {} started, current mode: {mode}",
+        env!("CARGO_PKG_NAME"),
+        env!("CARGO_PKG_VERSION")
+    );
 
     let mut last_press: Option<Instant> = None;
     loop {

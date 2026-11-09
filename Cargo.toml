@@ -3,6 +3,7 @@ name = "redmibook-fan-mode"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.88"
+authors = ["0x57C0DE"]
 description = "Fn+K fan mode notification for the Redmi Book Pro 15 2022 on Linux"
 license = "MIT"
 repository = "https://github.com/0x57C0DE/RedmiBook-Fan-Mode"

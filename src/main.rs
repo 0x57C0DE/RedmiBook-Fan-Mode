@@ -19,7 +19,13 @@ use crate::ec::{Ec, FAN_OFFSETS, MODE_OFFSET};
 use crate::mode::Mode;
 
 #[derive(Parser)]
-#[command(version, about)]
+#[command(
+    version,
+    about,
+    author,
+    help_template = "{name} {version}, by {author}\n{about}\n\n{usage-heading} {usage}\n\n{all-args}\n\n{after-help}",
+    after_help = concat!("Source: ", env!("CARGO_PKG_REPOSITORY"))
+)]
 struct Cli {
     #[command(subcommand)]
     command: Command,

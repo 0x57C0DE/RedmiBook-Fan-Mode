@@ -8,7 +8,18 @@ The EC is only read, never written.
 
 ## Install
 
-Needs a kernel with `ec_sys` as a module (`CONFIG_ACPI_EC_DEBUGFS=m`, true for Ubuntu and most distros), systemd, a freedesktop notification server, and Rust 1.88+.
+Needs a kernel with `ec_sys` as a module (`CONFIG_ACPI_EC_DEBUGFS=m`, true for Ubuntu and most distros), systemd and a freedesktop notification server.
+
+From a release (x86_64):
+
+```
+curl -LO https://github.com/0x57C0DE/RedmiBook-Fan-Mode/releases/latest/download/redmibook-fan-mode-x86_64-linux.tar.gz
+tar xzf redmibook-fan-mode-x86_64-linux.tar.gz
+cd redmibook-fan-mode-x86_64-linux
+sudo make install
+```
+
+From source (Rust 1.88+):
 
 ```
 make build

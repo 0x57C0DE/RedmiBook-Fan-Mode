@@ -5,7 +5,8 @@ MODPROBEDIR ?= /etc/modprobe.d
 PPD_DROPIN_DIR ?= /etc/systemd/system/power-profiles-daemon.service.d
 
 NAME = redmibook-fan-mode
-BINARY = target/release/$(NAME)
+# A release archive ships the binary next to this Makefile.
+BINARY ?= $(if $(wildcard $(NAME)),$(NAME),target/release/$(NAME))
 SERVICE = $(NAME).service
 BLACKLIST = blacklist-bitland-mifs.conf
 PPD_DROPIN = block-platform-profile.conf
@@ -20,7 +21,7 @@ check:
 	cargo clippy --locked --all-targets -- -D warnings
 
 install:
-	@test -x $(BINARY) || { echo "run 'make build' first, as your user"; exit 1; }
+	@test -x $(BINARY) || { echo "no binary: run 'make build' first, as your user"; exit 1; }
 	install -D -m 755 $(BINARY) $(DESTDIR)$(BINDIR)/$(NAME)
 	install -d $(DESTDIR)$(UNITDIR)
 	sed 's|@BINDIR@|$(BINDIR)|' systemd/$(SERVICE).in > $(DESTDIR)$(UNITDIR)/$(SERVICE)
