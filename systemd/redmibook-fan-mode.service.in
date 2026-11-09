@@ -1,0 +1,19 @@
+[Unit]
+Description=Show the EC fan mode after Fn+K (Redmi Book Pro 15 2022)
+
+[Service]
+ExecStart=@BINDIR@/redmibook-fan-mode daemon
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=yes
+PrivateNetwork=yes
+PrivateTmp=yes
+ProtectSystem=strict
+RestrictAddressFamilies=AF_UNIX
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
